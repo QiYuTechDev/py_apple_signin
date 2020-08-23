@@ -1,12 +1,29 @@
 [tool.poetry]
 name = "py_apple_signin"
 version = "0.1.0"
-description = ""
+description = "Apple Sign In Python Server Side impl"
 authors = ["dev <dev@qiyutech.tech>"]
 license = "MIT"
 
+[[tool.poetry.source]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple"
+default = true
+
 [tool.poetry.dependencies]
 python = "^3.8"
+
+# for sync support
+requests = ">=2.24,<2.25"
+
+# for async support
+aiohttp = ">=3.6,<3.7"
+
+# JSON Web token support
+pyjwt = ">=1.7,<1.8"
+
+# JWT dep on this
+cryptography = ">=3.0,<4.0"
 
 [tool.poetry.dev-dependencies]
 
