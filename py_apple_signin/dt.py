@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 from typing import Literal, Union, Optional
 
+import jwt
 from dataclasses_json import DataClassJsonMixin
 
-__all__ = ['AppleConfig', 'AppleSignInDecoded']
+__all__ = ['AppleConfig', 'AppleSignInDecoded', 'AppleSignInFailureRet', 'AppleSignInSuccessRet']
 
 
 @dataclass
@@ -33,6 +34,55 @@ class AppleConfig(DataClassJsonMixin):
     """
     the app's bundle id
     """
+
+
+@dataclass
+class AppleSignInFailureRet(DataClassJsonMixin):
+    error: str = None
+    """
+    如果请求失败的原因
+    """
+
+
+@dataclass
+class AppleSignInSuccessRet(DataClassJsonMixin):
+    """
+    doc: https://developer.apple.com/documentation/sign_in_with_apple/tokenresponse
+    """
+
+    access_token: str
+    """
+    (Reserved for future use) A token used to access allowed data.
+    Currently, no data set has been defined for access.
+    """
+
+    expires_in: int
+    """
+    The amount of time, in seconds, before the access token expires.
+    """
+
+    id_token: str
+    """
+    A JSON Web Token that contains the user’s identity information.
+    """
+
+    refresh_token: str
+    """
+    The refresh token used to regenerate new access tokens. Store this token securely on your server.
+    """
+
+    token_type: str
+    """
+    The type of access token. It will always be bearer.
+    """
+
+    @property
+    def decoded_id_token(self) -> Optional['AppleSignInDecoded']:
+        decoded = jwt.decode(self.id_token, '', verify=False)
+        if isinstance(decoded):
+            return AppleSignInDecoded.from_dict(decoded)
+        else:
+            return None
 
 
 @dataclass
