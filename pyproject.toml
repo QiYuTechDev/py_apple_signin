@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "Apple Sign In Python Server Side impl"
 authors = ["dev <dev@qiyutech.tech>"]
 license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/QiYuTechDev/py_apple_signin"
+repository = "https://github.com/QiYuTechDev/py_apple_signin"
 
 [[tool.poetry.source]]
 name = "aliyun"
