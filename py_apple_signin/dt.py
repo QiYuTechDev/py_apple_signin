@@ -79,7 +79,7 @@ class AppleSignInSuccessRet(DataClassJsonMixin):
     @property
     def decoded_id_token(self) -> Optional['AppleSignInDecoded']:
         decoded = jwt.decode(self.id_token, '', verify=False)
-        if isinstance(decoded):
+        if isinstance(decoded, dict):
             return AppleSignInDecoded.from_dict(decoded)
         else:
             return None
