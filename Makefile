@@ -3,4 +3,4 @@ outdated:
 
 
 publish:
-	poetry publish
+	poetry publish --build
