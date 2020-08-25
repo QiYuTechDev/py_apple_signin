@@ -122,21 +122,6 @@ class AppleSignInDecoded(DataClassJsonMixin):
     The value must be greater than the current date/time when verifying the token.
     """
 
-    nonce: str
-    """
-    A String value used to associate a client session and the identity token.
-    This value is used to mitigate replay attacks and is present only if passed during the authorization request.
-    """
-
-    nonce_supported: bool
-    """
-    A Boolean value that indicates whether the transaction is on a nonce-supported platform.
-    If you sent a nonce in the authorization request but do not see the nonce claim in the identity token,
-    check this claim to determine how to proceed.
-    If this claim returns true, you should tream nonce as mandatory and fail the transaction;
-    otherwise, you can proceed treating the nonce as options.
-    """
-
     email: str
     """
     A String value representing the user’s email address.
@@ -166,4 +151,19 @@ class AppleSignInDecoded(DataClassJsonMixin):
     This claim is present only on iOS 14 and later,
     macOS 11 and later, watchOS 7 and later, tvOS 14 and later;
     the claim is not present or supported for web-based apps.
+    """
+
+    nonce: Optional[str] = None
+    """
+    A String value used to associate a client session and the identity token.
+    This value is used to mitigate replay attacks and is present only if passed during the authorization request.
+    """
+
+    nonce_supported: Optional[bool] = None
+    """
+    A Boolean value that indicates whether the transaction is on a nonce-supported platform.
+    If you sent a nonce in the authorization request but do not see the nonce claim in the identity token,
+    check this claim to determine how to proceed.
+    If this claim returns true, you should tream nonce as mandatory and fail the transaction;
+    otherwise, you can proceed treating the nonce as options.
     """
