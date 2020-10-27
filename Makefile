@@ -3,7 +3,7 @@ build:
 
 
 publish:
-	poetry publish
+	poetry publish --build
 
 
 outdated:
