@@ -6,7 +6,7 @@ from .dt import AppleConfig
 from .dt import AppleSignInSuccessRet, AppleSignInFailureRet
 from .shared import Shared
 
-__all__ = ['AppleSignInAsyncApi']
+__all__ = ["AppleSignInAsyncApi"]
 
 
 class AppleSignInAsyncApi(Shared):
@@ -20,7 +20,9 @@ class AppleSignInAsyncApi(Shared):
         super().__init__(config)
         self._session = ClientSession()
 
-    async def try_auth(self, code: str) -> Optional[Union[AppleSignInSuccessRet, AppleSignInFailureRet]]:
+    async def try_auth(
+        self, code: str
+    ) -> Optional[Union[AppleSignInSuccessRet, AppleSignInFailureRet]]:
         """
         尝试进行 code 的认证
         :param code: 授权code
@@ -28,7 +30,9 @@ class AppleSignInAsyncApi(Shared):
         """
         headers, data = self._make_up_data(code)
 
-        resp = await self._session.post(self.ACCESS_TOKEN_URL, data=data, headers=headers)
+        resp = await self._session.post(
+            self.ACCESS_TOKEN_URL, data=data, headers=headers
+        )
         if not (200 <= resp.status < 300):
             # network or apple server is down
             return None

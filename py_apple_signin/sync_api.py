@@ -5,7 +5,7 @@ from requests import Session
 from .dt import AppleConfig, AppleSignInSuccessRet, AppleSignInFailureRet
 from .shared import Shared
 
-__all__ = ['AppleSignInApi']
+__all__ = ["AppleSignInApi"]
 
 
 class AppleSignInApi(Shared):
@@ -17,7 +17,9 @@ class AppleSignInApi(Shared):
         super().__init__(config)
         self._session = Session()
 
-    def try_auth(self, code: str) -> Optional[Union[AppleSignInSuccessRet, AppleSignInFailureRet]]:
+    def try_auth(
+        self, code: str
+    ) -> Optional[Union[AppleSignInSuccessRet, AppleSignInFailureRet]]:
         """
         尝试进行 code 的认证
         :param code: 授权code
@@ -25,7 +27,9 @@ class AppleSignInApi(Shared):
         """
         headers, data = self._make_up_data(code)
 
-        resp = self._session.post(self.ACCESS_TOKEN_URL, data=data, headers=headers)
+        token_url = self.ACCESS_TOKEN_URL
+
+        resp = self._session.post(token_url, data=data, headers=headers)
         if not resp.ok:
             # network or apple server is down
             return None
