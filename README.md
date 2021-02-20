@@ -8,3 +8,9 @@ Apple SignIn Server Side in Python (with sync & async API)
 ![PyPI - Wheel](https://img.shields.io/pypi/wheel/py-apple-signin)
 ![GitHub repo size](https://img.shields.io/github/repo-size/qiyutechdev/py_apple_signin)
 ![Lines of code](https://img.shields.io/tokei/lines/github/qiyutechdev/py_apple_signin)
+
+## WARING(警告)
+
+This project is sunset, use [QiYuAPI](https://github.com/QiYuTechDev/qiyu-api) please.
+
+这个项目已经不在维护, 请使用 [QiYuAPI](https://github.com/QiYuTechDev/qiyu-api).

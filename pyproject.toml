@@ -8,10 +8,6 @@ readme = "README.md"
 homepage = "https://github.com/QiYuTechDev/py_apple_signin"
 repository = "https://github.com/QiYuTechDev/py_apple_signin"
 
-[[tool.poetry.source]]
-name = "aliyun"
-url = "https://mirrors.aliyun.com/pypi/simple"
-default = true
 
 [tool.poetry.dependencies]
 python = "^3.9"
