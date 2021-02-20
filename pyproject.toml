@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "py_apple_signin"
-version = "0.3.0"
+version = "0.3.1"
 description = "Apple Sign In Python Server Side impl"
 authors = ["dev <dev@qiyutech.tech>"]
 license = "MIT"
